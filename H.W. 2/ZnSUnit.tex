@@ -1,0 +1,149 @@
+\documentclass[tikz,border=1cm]{standalone} 
+\usepackage{tikz-3dplot} 
+\begin{document}
+
+\tdplotsetmaincoords{70}{125} 
+\begin{tikzpicture} [scale=3, tdplot_main_coords, axis/.style={->,blue,thick}, 
+vector/.style={-stealth,red,very thick}, 
+vector guide/.style={dashed,black,thick}]
+
+%standard tikz coordinate definition using x, y, z coords
+\coordinate (O) at (1,0,0);
+
+%tikz-3dplot coordinate definition using x, y, z coords
+
+%\pgfmathsetmacro{\ax}{0.8}
+%\pgfmathsetmacro{\ay}{0.8}
+%\pgfmathsetmacro{\az}{0.8}
+
+\coordinate (P) at (.5,.5,.5);
+\coordinate (P2) at (.5,1.5,1.5);
+\coordinate (P3) at (-.5 ,1.5,.5);
+\coordinate (P4) at (-.5 ,.5,1.5);
+\coordinate (P5) at (.5 ,.5,2.5);
+
+%draw axes
+\draw[axis] (0,0,0) -- (2.5,0,0) node[anchor=north east]{$x$};
+\draw[axis] (0,0,0) -- (0,2.5,0) node[anchor=north west]{$y$};
+\draw[axis] (0,0,0) -- (0,0,2.5) node[anchor=south]{$z$};
+
+%draw a vector from O to P
+\draw[vector] (O) -- (P);
+\draw[vector] (1,1,1)--(P);
+\draw[vector] (0,1,0)--(P);
+\draw[vector] (0,0,1)--(P);
+
+\draw[vector] (1,1,1)--(P2);
+\draw[vector] (1,2,2)--(P2);
+\draw[vector] (0,2,1)--(P2);
+\draw[vector] (0,1,2)--(P2);
+
+
+
+\draw[vector] (-1,2,0)--(P3);
+\draw[vector] (-1,1,1)--(P3);
+\draw[vector] (0,2,1)--(P3);
+\draw[vector] (0,1,0)--(P3);
+
+
+\draw[vector] (-1,0,2)--(P4);
+\draw[vector] (-1,1,1)--(P4);
+\draw[vector] (0,1,2)--(P4);
+\draw[vector] (0,0,1)--(P4);
+
+%\draw[vector] (1,0,2)--(P5);
+%\draw[vector] (0,1,2)--(P5);
+
+%\draw plot [mark=*, mark size=1.25] coordinates{(1,2,2)}; 
+%\draw plot [mark=*, mark size=1.25] coordinates{(0,2,1)}; 
+%\draw plot [mark=*, mark size=1.25] coordinates{(0,1,2)};
+%
+
+
+
+%draw guide lines to components
+\draw[vector guide]         (O) -- (1,1,0);
+%\draw[vector guide] (1,1,0) -- (P);
+\draw[vector guide]         (P) -- (0,0,1);
+\draw[vector guide] (1,1,0) -- (0,1,0);
+\draw[vector guide] (1,1,0) -- (0,1,0);
+%\draw[vector guide] (1,1,0) -- (1,0,0);
+\draw[vector guide] (1,1,0) -- (1,1,1);
+\draw[vector guide] (1,0,1) -- (1,1,1);
+\draw[vector guide] (1,0,0) -- (1,0,1);
+\draw[vector guide] (1,0,1) -- (0,0,1);
+\draw[vector guide] (0,0,1) -- (0,1,1);
+\draw[vector guide] (0,1,1) -- (0,1,0);
+\draw[vector guide] (1,1,1) -- (-1,1,1);
+\draw[vector guide] (1,1,2) -- (-1,1,2);
+\draw[vector guide] (-1,0,1) -- (-1,2,1);
+\draw[vector guide] (-1,0,2) -- (-1,2,2);
+
+\draw[vector guide] (-1,0,1) -- (0,0,1);
+\draw[vector guide] (-1,2,1) -- (1,2,1);
+\draw[vector guide] (-1,2,2) -- (1,2,2);
+\draw[vector guide] (-1,2,0) -- (1,2,0);
+\draw[vector guide] (1,1,1) -- (1,2,1);
+\draw[vector guide] (-1,0,0) -- (-1,2,0);
+\draw[vector guide] (-1,2,1) -- (-1,2,0);
+\draw[vector guide] (-1,1,1) -- (-1,1,0);
+\draw[vector guide] (0,1,0) -- (-1,1,0);
+\draw[vector guide] (1,1,0) -- (1,2,0);
+\draw[vector guide] (1,2,0) -- (1,2,1);
+\draw[vector guide] (0,0,1) -- (0,2,1);
+\draw[vector guide] (0,2,2) -- (0,2,0);
+
+\draw[vector guide] (1,0,2) -- (1,2,2);
+\draw[vector guide] (1,0,2) -- (-1,0,2);
+\draw[vector guide] (1,0,2) -- (1,0,1);
+\draw[vector guide] (-1,0,2) -- (-1,0,1);
+\draw[vector guide] (1,1,1) -- (1,1,2);
+\draw[vector guide] (1,2,1) -- (1,2,2);
+\draw[vector guide] (-1,2,1) -- (-1,2,2);
+\draw[vector guide] (0,0,2) -- (0,2,2);
+\draw[vector guide] (-1,1,2) -- (-1,1,1);
+\draw[vector guide] (1,0,0) -- (-1,0,0);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\draw plot [mark=*, mark size=1.25] coordinates{(1,0,0)}; 
+\draw plot [mark=*, mark size=1.25] coordinates{(1,1,1)}; 
+\draw plot [mark=*, mark size=1.25] coordinates{(0,1,0)};
+\draw plot [mark=*, mark size=1.25] coordinates{(0,0,1)};
+\draw plot [mark=*, mark size=1,   mark options={fill=blue}] coordinates{(.5,.5,.5)}; 
+
+\draw plot [mark=*, mark size=1.25] coordinates{(1,2,2)}; 
+\draw plot [mark=*, mark size=1.25] coordinates{(0,2,1)}; 
+\draw plot [mark=*, mark size=1.25] coordinates{(0,1,2)};
+
+\draw plot [mark=*, mark size=1,   mark options={fill=blue}] coordinates{(P2)}; 
+\draw plot [mark=*, mark size=1.25] coordinates{(-1,2,0)};
+  \draw plot [mark=*, mark size=1.25] coordinates{(-1,1,1)};
+  \draw plot [mark=*, mark size=1,   mark options={fill=blue}] coordinates{(P3)}; 
+  \draw plot [mark=*, mark size=1,   mark options={fill=blue}] coordinates{(P4)}; 
+\draw plot [mark=*, mark size=1.25] coordinates{(-1,0,2)};
+
+ % \draw plot [mark=*, mark size=1,   mark options={fill=blue}] coordinates{(P5)}; 
+\draw plot [mark=*, mark size=1.25] coordinates{(1,0,2)};
+\draw plot [mark=*, mark size=1.25] coordinates{(-1,2,2)};
+\draw plot [mark=*, mark size=1.25] coordinates{(-1,0,0)};
+\draw plot [mark=*, mark size=1.25] coordinates{(1,2,0)};
+
+
+%\node[tdplot_main_coords,anchor=east] at (\ax,0,0){(\ax, 0, 0)};
+
+
+\end{tikzpicture}
+\end{document}

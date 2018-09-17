@@ -1,0 +1,78 @@
+\documentclass[tikz,border=1cm]{standalone} 
+\usepackage{tikz-3dplot} 
+\begin{document}
+
+\tdplotsetmaincoords{70}{110} 
+\begin{tikzpicture} [scale=3, tdplot_main_coords, axis/.style={->,blue,thick}, 
+vector/.style={-stealth,red,very thick}, 
+vector guide/.style={dashed,black,thick}]
+
+%standard tikz coordinate definition using x, y, z coords
+\coordinate (O) at (1,0,0);
+\coordinate (Z) at (0,0,1);
+\coordinate (Y) at (0,1,0);
+\coordinate (X) at (1,0,0);
+\coordinate (XY) at (1,1,0);
+\coordinate (XZ) at (1,0,1);
+\coordinate (YZ) at (0,1,1);
+\coordinate (XYZ) at (1,1,1);
+%tikz-3dplot coordinate definition using x, y, z coords
+
+%\pgfmathsetmacro{\ax}{0.8}
+%\pgfmathsetmacro{\ay}{0.8}
+%\pgfmathsetmacro{\az}{0.8}
+
+%\coordinate (P) at (.5,.5,.5);
+
+%draw axes
+
+\filldraw[
+        draw=red,%
+        fill=red!20,%
+    ]          (Z)
+            -- (XZ)
+            -- (XYZ)
+            -- (YZ)
+            -- cycle;
+
+\draw[axis] (0,0,0) -- (1.5,0,0) node[anchor=north east]{$x$};
+\draw[axis] (0,0,0) -- (0,1.5,0) node[anchor=north west]{$y$};
+\draw[axis] (0,0,0) -- (0,0,1.5) node[anchor=south]{$z$};
+
+%draw a vector from O to P
+%\draw[vector] (O) -- (P);
+%\draw[vector] (1,1,1)--(P);
+%\draw[vector] (0,1,0)--(P);
+%\draw[vector] (0,0,1)--(P);
+
+
+%draw guide lines to components
+\draw[vector guide]         (O) -- (1,1,0);
+%\draw[vector guide] (1,1,0) -- (P);
+%\draw[vector guide]         (P) -- (0,0,1);
+\draw[vector guide] (1,1,0) -- (0,1,0);
+\draw[vector guide] (1,1,0) -- (0,1,0);
+%\draw[vector guide] (1,1,0) -- (1,0,0);
+\draw[vector guide] (1,1,0) -- (1,1,1);
+\draw[vector guide] (1,0,1) -- (1,1,1);
+\draw[vector guide] (1,0,0) -- (1,0,1);
+\draw[vector guide] (1,0,1) -- (0,0,1);
+\draw[vector guide] (0,0,1) -- (0,1,1);
+\draw[vector guide] (0,1,1) -- (0,1,0);
+\draw[vector guide] (0,1,1) -- (1,1,1);
+
+\draw plot [mark=*, mark size=1.25] coordinates{(1,0,0)}; 
+\draw plot [mark=*, mark size=1.25] coordinates{(1,1,1)}; 
+\draw plot [mark=*, mark size=1.25] coordinates{(0,1,0)};
+\draw plot [mark=*, mark size=1.25] coordinates{(0,0,1)};
+\draw plot [mark=*, mark size=1.25] coordinates{(1,0,1)};
+\draw plot [mark=*, mark size=1.25] coordinates{(1,1,0)};
+\draw plot [mark=*, mark size=1.25] coordinates{(0,1,1)};
+%\draw plot [mark=*, mark size=1,   mark options={fill=blue}] coordinates{(.5,.5,.5)};   
+%\node[tdplot_main_coords,anchor=east] at (\ax,0,0){(\ax, 0, 0)};
+
+
+
+
+\end{tikzpicture}
+\end{document}
